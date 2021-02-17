@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <link href="styles.css" rel="stylesheet">
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+  <div id="app" class="max-w-md mx-auto my-10 space-y-3">
+    <h1 class="text-xl">Photo Gallery
+      <!--( {{ tasks.filter( t => !t.done ).length }} )--> ({{places.length}})
+    </h1>
+
+    <div class="flex w-full justify-end">
+      <button v-show="!search" v-on:click="clickSearch">
+        <span class="material-icons ">search</span>
+      </button>
+      <input type="text" class="border-2 w-full" v-model="input" v-show="search" placeholder="searchhh!!!" />
+      <button v-show="search" v-on:click="clickcancel">Cancel
+      </button>
+    </div>
+
+    <div class="flex flex-row" v-show="expand">
+      <img v-bind:src="expandImgPath" @click="expandImg2" class="w-max h-96">
+
+    </div>
+
+    <div class="flex flex-row">
+      <ul v-if="inputSearchfil.length !=0">
+        <li v-for="(inputs,index) in inputSearchfil" :key="inputs.id" class="flex flex-row">
+
+          <img v-bind:src="inputs.img" @click="expandImg(inputs.img)" class="w-32 h-32 mr-5 mb-5">
+          <button v-on:click="placess(inputs.id)" class=" h-32 ">{{inputs.Pname}} {{inputs.des}},
+            {{inputs.country}}</button>
+          <div class="flex h-32 justify-center relative top-14">
+            <span class="material-icons text-center" v-show="inputs.done"> favorite_border</span>
+          </div>
+        </li>
+      </ul>
+      <ul v-else>
+        No photos
+      </ul>
+    </div>
+
+
+
+
+  </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
