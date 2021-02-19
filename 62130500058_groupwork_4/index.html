@@ -37,9 +37,15 @@
       </button>
     </div>
 
-    <div class="flex flex-row" v-show="expand">
-      <img v-bind:src="expandImgPath" @click="expandImg2" class="w-max h-96">
-
+    <div class="w-full h-full bg-black " v-show="expand">
+      <div class="flex justify-end text-white">
+        <div>
+          <span class="material-icons text-4xl" @click="expandImg2"> highlight_off </span>
+        </div>
+      </div>
+      <div class="flex justify-center ">
+        <img v-bind:src="expandImgPath" class="w-96 h-96 bg-center mb-10  ">
+      </div>
     </div>
 
     <div class="flex flex-row">
